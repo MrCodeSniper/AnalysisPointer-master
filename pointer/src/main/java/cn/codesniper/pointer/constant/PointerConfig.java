@@ -1,4 +1,4 @@
-package cn.codesniper.pointer;
+package cn.codesniper.pointer.constant;
 
 public class PointerConfig {
 

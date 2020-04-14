@@ -8,7 +8,10 @@ import android.view.ViewParent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewRoot {
+/**
+ *  ViewPath对象
+ */
+public class TraceViewRoot {
 
     private String viewType;
     private String itemPath;
@@ -17,11 +20,23 @@ public class ViewRoot {
     private String completePath;
     private String clz;
 
+    @Override
+    public String toString() {
+        return "TraceViewRoot{" +
+                "viewType='" + viewType + '\'' +
+                ", itemPath='" + itemPath + '\'' +
+                ", index=" + index +
+                ", mView=" + mView +
+                ", completePath='" + completePath + '\'' +
+                ", clz='" + clz + '\'' +
+                '}';
+    }
+
     public String getItemPath() {
         return itemPath;
     }
 
-    public ViewRoot(View view, String clz) {
+    public TraceViewRoot(View view, String clz) {
         this.clz=clz;
         this.mView=view;
         this.viewType =view.getClass().getSimpleName();

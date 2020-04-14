@@ -1,4 +1,4 @@
-package cn.codesniper.analysispointer;
+package cn.codesniper.analysispointer.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

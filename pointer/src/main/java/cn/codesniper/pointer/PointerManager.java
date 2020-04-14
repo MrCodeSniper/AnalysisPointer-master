@@ -4,7 +4,7 @@ import android.app.Application;
 
 
 import cn.codesniper.pointer.lifecycle.PointerActivityLifecycle;
-import cn.codesniper.pointer.unit.Point;
+import cn.codesniper.pointer.unit.TracePoint;
 
 /**
  * 打点系统
@@ -19,11 +19,10 @@ public class PointerManager {
         this.application=application;
     }
 
+    //注册
     public void init(){
         application.registerActivityLifecycleCallbacks(new PointerActivityLifecycle());
     }
-
-
 
     public static PointerManager getInstance(Application application) {
         if (singleton == null) {
@@ -41,7 +40,7 @@ public class PointerManager {
      * 打点时 根据view路径 解析事件类型 再根据数据路径取值 字符串 进行打点
      * @param point
      */
-    public static void report(Point point){
+    public static void report(TracePoint point){
 
 
     }

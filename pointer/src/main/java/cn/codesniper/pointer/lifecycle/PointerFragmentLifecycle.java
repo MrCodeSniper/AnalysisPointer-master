@@ -9,7 +9,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 
+import cn.codesniper.pointer.click.ClickEventProcessor;
+import cn.codesniper.pointer.click.ClickHookProcessor;
+import cn.codesniper.pointer.click.TraceWrapperClickListener;
 
+/**
+ * 页面埋点 Type:Fragment
+ */
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class PointerFragmentLifecycle extends FragmentManager.FragmentLifecycleCallbacks {
 
@@ -56,6 +62,7 @@ public class PointerFragmentLifecycle extends FragmentManager.FragmentLifecycleC
     @Override
     public void onFragmentResumed(FragmentManager fm, Fragment f) {
         super.onFragmentResumed(fm, f);
+        ClickEventProcessor.getInstance().setFragmentTracker(f);
     }
 
     @Override

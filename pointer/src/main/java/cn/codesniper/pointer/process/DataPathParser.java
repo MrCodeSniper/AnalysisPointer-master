@@ -6,24 +6,21 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.codesniper.pointer.lifecycle.PointerAppManager;
-import cn.codesniper.pointer.util.ClassUtils;
 
-import static cn.codesniper.pointer.PointerConfig._TAG;
+import static cn.codesniper.pointer.constant.PointerConfig._TAG;
 
 //https://www.jianshu.com/p/b5ffe845fe2d
 
 /**
- * 我们打点时只需要字符串即可
+ * 我们打点时只需要字符串即可  数据埋点DSL  还需大量扩展和实现
  */
 public class DataPathParser {
 

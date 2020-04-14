@@ -1,4 +1,4 @@
-package cn.codesniper.analysispointer;
+package cn.codesniper.analysispointer.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,10 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
-import static cn.codesniper.pointer.PointerConfig._TAG;
+import cn.codesniper.analysispointer.R;
+import cn.codesniper.analysispointer.bean.News;
+
+import static cn.codesniper.pointer.constant.PointerConfig._TAG;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 

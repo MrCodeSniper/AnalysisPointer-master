@@ -1,6 +1,6 @@
-package cn.codesniper.analysispointer;
+package cn.codesniper.analysispointer.bean;
 
-public class News implements IData{
+public class News {
     private String title;
     private String source;
     private String time;

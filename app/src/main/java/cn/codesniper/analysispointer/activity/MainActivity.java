@@ -1,27 +1,28 @@
-package cn.codesniper.analysispointer;
+package cn.codesniper.analysispointer.activity;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.codesniper.pointer.delegate.ClickEventProcessor;
+import cn.codesniper.analysispointer.bean.News;
+import cn.codesniper.analysispointer.adapter.NewsAdapter;
+import cn.codesniper.analysispointer.R;
+import cn.codesniper.pointer.click.ClickEventProcessor;
 import cn.codesniper.pointer.process.DataPathParser;
-import cn.codesniper.pointer.util.HookUtil;
 
 public class MainActivity extends Activity {
 
     private String mText="";
     private RecyclerView rv;
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class MainActivity extends Activity {
 
         //ContentView/MainActivity[0]/FrameLayout[0]/ActionBarOverlayLayout[0]/ContentFrameLayout[0]/ConstraintLayout[0]/AppCompatTextView[0]
         //ContentFrameLayout[0]内容父布局
-        ClickEventProcessor.getInstance().setActivityTracker(this);
+//        ClickEventProcessor.getInstance().setActivityTracker(this);
 
 
     }

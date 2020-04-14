@@ -5,7 +5,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.codesniper.pointer.PointerConfig._TAG;
+import static cn.codesniper.pointer.constant.PointerConfig._TAG;
 
 public class ClassUtils {
 

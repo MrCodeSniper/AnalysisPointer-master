@@ -5,22 +5,25 @@ import android.app.Application;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.ActionBarContextView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
-import cn.codesniper.pointer.R;
-import cn.codesniper.pointer.util.HookUtil;
+import cn.codesniper.pointer.click.ClickEventProcessor;
+import cn.codesniper.pointer.click.ClickHookProcessor;
 
+/**
+ * 页面埋点 Type:Activity
+ */
 public class PointerActivityLifecycle implements Application.ActivityLifecycleCallbacks {
+
+    private static final String TAG = "PointerActivityLifecycl";
+
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        Log.d("xxx","onActivityCreated");
+        Log.d(TAG,"onActivityCreated");
         PointerAppManager.getAppManager().addActivity(activity);
 
         if(activity instanceof FragmentActivity){
@@ -30,23 +33,27 @@ public class PointerActivityLifecycle implements Application.ActivityLifecycleCa
         }
     }
 
+    /**
+     * 拿到Activity的DecorView视图树 递归树
+     * @param viewGroup
+     */
     private void hookViewGroup(ViewGroup viewGroup){
-        Log.d("xxx","&&"+viewGroup.getChildCount()+"&&"+viewGroup.getClass().getSimpleName());
+        Log.d(TAG,"当前ViewGroup::"+viewGroup.getClass().getSimpleName()+"的子View数量:"+viewGroup.getChildCount());
         for(int i=0;i<viewGroup.getChildCount();i++){
             View view=viewGroup.getChildAt(i);
             if(view instanceof  ViewGroup){
                 if(view instanceof RecyclerView){
-                    Log.d("xxx","rv");
+                    Log.d(TAG,"Hook RecyclerView");
                     RecyclerView rv= (RecyclerView) view;
-                    HookUtil.hookView(rv.getRootView());
+                    ClickHookProcessor.hookView(rv.getRootView());
                 }else {
                     hookViewGroup((ViewGroup) view);
                 }
-            }else if(view instanceof ViewStub){
+            }else if(view instanceof ViewStub){ //兼容ViewStub懒加载情况
                 ViewStub viewStub= (ViewStub) view;
                 hookViewGroup((ViewGroup) viewStub.inflate());
-            }else if(view instanceof View) {
-                HookUtil.hookView(view);
+            }else if(view != null) { //如果是叶子view
+                ClickHookProcessor.hookView(view);
             }
         }
     }
@@ -59,6 +66,7 @@ public class PointerActivityLifecycle implements Application.ActivityLifecycleCa
 
     @Override
     public void onActivityResumed(Activity activity) {
+        ClickEventProcessor.getInstance().setActivityTracker(activity);
         View view=activity.getWindow().getDecorView();
         hookViewGroup((ViewGroup) view);
     }

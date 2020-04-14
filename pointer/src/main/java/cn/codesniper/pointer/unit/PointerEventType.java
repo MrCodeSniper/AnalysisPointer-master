@@ -45,4 +45,10 @@ public enum PointerEventType {
     public int getEventValue() {
         return eventValue;
     }
+
+    @Override
+    public String toString() {
+        return "PointerEventType{" +
+                "eventName='" + eventName + '}';
+    }
 }

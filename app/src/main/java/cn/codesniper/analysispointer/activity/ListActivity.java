@@ -1,4 +1,4 @@
-package cn.codesniper.analysispointer;
+package cn.codesniper.analysispointer.activity;
 
 import android.app.Activity;
 

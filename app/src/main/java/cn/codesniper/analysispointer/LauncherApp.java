@@ -4,7 +4,7 @@ import android.app.Application;
 
 import cn.codesniper.pointer.PointerManager;
 
-public class MyApplication extends Application {
+public class LauncherApp extends Application {
 
     @Override
     public void onCreate() {
