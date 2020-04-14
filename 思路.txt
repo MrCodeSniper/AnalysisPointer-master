@@ -1,0 +1,29 @@
+拦截OnClickListener
+或者提供自定义的回调 
+使用埋点接口 统一处理
+
+Acitivity和Fragment都需要
+
+ASM直接找到方法插入
+
+配置文件JSON
+
+RecycleView动态添加如何处理
+
+ViewGroup.addView如何处理
+
+
+DecorView->LinearLayout 容器->ActionBarContextView标题 
+			->FrameLayout内容布局  ->LinearLayout ->MyTextView
+							->RecyclerView	
+
+采集的事件类型
+
+    APP_START("_AppStart", 1 << 0), 
+    APP_END("_AppEnd", 1 << 1),
+    APP_CLICK("_AppClick", 1 << 2),
+    APP_VIEW_SCREEN("_AppViewScreen", 1 << 3); //ACTIVITY,FRAGMENT
+
+埋点多线程注意
+
+
